@@ -11,16 +11,7 @@ mongoose.connect("mongodb://localhost:27017/nodeapi", {
 });
 requireDir("./src/models");
 
-const Product = mongoose.model("Product");
-
-// Primeira rota
-app.get("/", (req, res) => {
-  Product.create({
-    title: "React Native",
-    description: "Alguma coisa",
-    url: "www.google.com"
-  });
-  return res.send("Hello Davi");
-});
+// Rotas
+app.use("/api", require("./src/routes"));
 
 app.listen(3001);
